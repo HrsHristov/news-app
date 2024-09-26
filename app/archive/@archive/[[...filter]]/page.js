@@ -19,7 +19,7 @@ const FilteredNewsPage = ({ params }) => {
 
     if (selectedYear && !selectedMonth) {
         news = getNewsForYear(selectedYear);
-        links = getAvailableNewsMonths(selectedMonth);
+        links = getAvailableNewsMonths(selectedYear);
     }
 
     if (selectedYear && selectedMonth) {
@@ -27,10 +27,18 @@ const FilteredNewsPage = ({ params }) => {
         links = [];
     }
 
-    let newsContent = <p>No news foud for the selected period!</p>;
+    let newsContent = <p>No news found for the selected period.</p>;
 
     if (news && news.length > 0) {
         newsContent = <NewsList news={news} />;
+    }
+
+    if (
+        (selectedYear && !getAvailableNewsYears().includes(+selectedYear)) ||
+        (selectedMonth &&
+            !getAvailableNewsMonths(selectedYear).includes(+selectedMonth))
+    ) {
+        throw new Error("Invalid filter.");
     }
 
     return (
