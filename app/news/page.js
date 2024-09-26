@@ -4,7 +4,7 @@ const NewsPage = () => {
     return (
         <>
             <h1>NewsPage</h1>
-            <ul>
+            <ul className="news-list">
                 <li>
                     <Link href="/news/first-news">First News Items</Link>
                 </li>
