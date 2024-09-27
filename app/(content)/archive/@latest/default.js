@@ -1,8 +1,8 @@
 import NewsList from "@/components/news-list";
 import { getLatestNews } from "@/lib/news";
 
-const LatestNewsPage = () => {
-    const latest = getLatestNews();
+const LatestNewsPage = async () => {
+    const latest = await getLatestNews();
 
     return (
         <>
